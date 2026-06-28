@@ -5,6 +5,9 @@ name: Keep Up
 #   ACCESS_TOKEN             - GitHub token used to push branches and open PRs
 #   KUP_LICENSE_KEY          - signed keepup license key (the tool refuses to run without it)
 #   CLAUDE_CODE_OAUTH_TOKEN  - token for the Claude Code agent (see kup.toml [agent])
+#
+# The built-in GITHUB_TOKEN is also forwarded as the release-notes API token to
+# lift the GitHub API rate limit (60 -> 5000 requests/hour); no extra secret needed.
 
 on:
   schedule:
@@ -22,3 +25,4 @@ jobs:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           license-key: ${{ secrets.KUP_LICENSE_KEY }}
           claude-code-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github-api-token: ${{ secrets.GITHUB_TOKEN }}
