@@ -1,0 +1,18 @@
+# keepup (MATE / Keep Up) configuration.
+#
+# This file leans on the dependency-level filters: it names the runtime deps to
+# keep current and ignores the vendored tree.
+
+[include]
+languages = ["javascript"]
+dependencies = ["uuid", "express", "lodash"]
+
+[ignore]
+paths = ["node_modules/**"]
+
+[thresholds]
+file = 1
+folder = 2
+
+[agent]
+name = "claude-code"
